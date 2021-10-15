@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Lista Zakupów</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background: #f06d06;
+            color: white;
+            text-align: center;
+
+        }
+
+        a {
+            color: rgb(0, 255, 200);
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        p {
+            color: black
+        }
+
+        .input {
+            height: 40px;
+            border-radius: 40px;
+            border-color: lightslategrey;
+
+        }
+
+     /*    .bu {
+            height: 40px;
+            border-radius: 40px;
+            border-color: crimson;
+        } */
+        .guzik {
+            height: 40px;
+            border-radius: 40px;
+            border-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <p><b>TWÓJ KOSZYK ZAKUPÓW</b></p><br>
+    <form class="formularz">
+        <input type="text" class="input">
+        <input type="button" class="guzik" value="dodaj">
+    </form>
+    <div class="utworzDiv">
+    </div>
+    <script>
+
+        const addBtn = document.querySelector('.guzik');
+        const addInput = document.querySelector('.input');
+        const addBox = document.querySelector('.utworzDiv');
+        let items;
+
+        addBtn.addEventListener('click', () => {
+            addBox.innerHTML += "<p>" + addInput.value + "<a> Skasuj</a></p>";
+            items = [...document.querySelectorAll('a')];
+            items.forEach((e) => {
+                e.addEventListener('click', () => {
+                    e.parentElement.remove();
+                })
+            })
+        addInput.value="";
+    })
+
+        function czysc() {
+            let clear = document.querySelector(".input");
+            clear.value = "";
+        }
+    </script>
+</body>
+
+</html>
